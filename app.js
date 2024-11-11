@@ -3,10 +3,7 @@ if ('serviceWorker' in navigator) {
 }
 
 document.getElementById('requestBtn').addEventListener('click', () => {
-    Notification.requestPermission()
-        .then(permission => {
-            if (permission === 'granted') {
-                window.location.href = 'https://portal.ghazaresan.com';
-            }
-        });
+    const portalFrame = document.getElementById('portalFrame');
+    portalFrame.contentWindow.postMessage('requestNotification', 'https://portal.ghazaresan.com');
+    window.location.href = 'https://portal.ghazaresan.com';
 });
